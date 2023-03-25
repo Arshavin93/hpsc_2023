@@ -1,0 +1,65 @@
+cd github/hpsc_2023/codes/python/Fortran/Makefile/
+PS1= '$ "
+pwd
+
+PS1= '$ '
+PS1='$ '
+pwd
+vim main.f90
+vim sub1.f90
+vim sub2.f90
+gfortran -c main.f90 sub1.f90 sub2.f90
+cat main.o
+clear
+gfortran main.o sub1.o sub2.o -o main.exe
+./main.exe > output.txt
+cat output.txt 
+vim sub2.f90 
+gfortran -c sub2.f90 
+gfortran main.o sub1.o sub2.o -o main.exe
+./main.exe > output.txt
+cat output.txt 
+gedit --version
+rm *.o *.exe
+make
+rm *.o *.exe
+make
+cat output.txt 
+touch sub2
+ls -l
+make
+rm *.o *.exe
+make
+ls -l
+ls -l sub1.*
+make sub1.o
+touch sub1.o
+ls -l sub1.o
+make main.exe 
+touch sub1.f90
+ls -l sub1.f90
+make
+clear
+rm *.o *.exe
+make -f Makefile1
+rm *.o *.exe
+make -f Makefile2
+cat output.txt 
+vim sub2.f90 
+make -f Makefile2
+clear
+make -f Makefile3
+rm *.o *.exe
+make -f Makefile3
+rm *.o *.exe
+make main.exe FFLAGS=-g -f Makefile4
+make main.exe FFLAGS=-g -f Makefile3
+clear
+make clean -f Makefile4
+make -f Makefile4
+make clean -f Makefile4
+make -f Makefile5
+make clobber -f Makefile5
+make help -f Makefile5
+history
+history -a makefile_command

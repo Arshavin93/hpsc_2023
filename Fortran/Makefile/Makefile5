@@ -1,0 +1,26 @@
+OBJECTS= main.o sub1.o sub2.o
+.PHONY: clean clobber help
+
+output.txt: main.exe
+	./main.exe > output.txt
+
+main.exe: $(OBJECTS)
+	gfortran $(OBJECTS) -o main.exe
+
+%.o: %.f90
+	gfortran -c $<
+
+clean:
+	rm $(OBJECTS) main.exe
+
+clobber:
+	rm $(OBJECTS) main.exe output.txt
+
+help:
+	@echo " Valid targets:"
+	@echo " Main.exe"
+	@echo " main.o"
+	@echo " sub1.o"
+	@echo " sub2.o"
+	@echo " clean: removes .o and .exe files"
+	@echo " clobber: removes .txt files"
